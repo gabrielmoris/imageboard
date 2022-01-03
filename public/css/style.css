@@ -1,25 +1,26 @@
-*{
-    font-family: 'Permanent Marker', cursive;
+* {
+    font-family: "Permanent Marker", cursive;
 }
 
-img{
+img {
     width: 100%;
     height: auto;
 }
-.title{
-text-align: center;
-font-size: 50px;
+
+.title {
+    text-align: center;
+    font-size: 50px;
 }
 
-.img-container{
+.img-container {
     display: grid;
     grid-template-columns: 450px 450px 450px;
     /* grid-template-rows: auto; */
-   column-gap: 50px;
-   row-gap: 50px;
+    column-gap: 50px;
+    row-gap: 50px;
 }
 
-.img-div{
+.img-div {
     background-color: antiquewhite;
     overflow: hidden;
     border: solid black 2px;
@@ -27,9 +28,9 @@ font-size: 50px;
     display: grid;
     grid-template-rows: 300px 1fr;
     align-items: center;
-    text-align:  center;
+    text-align: center;
 }
 
-.img-d{
+.img-d {
     background-color: antiquewhite;
 }

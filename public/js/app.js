@@ -1,4 +1,4 @@
-import * as Vue from './vue.js';
+import * as Vue from "./vue.js";
 
 Vue.createApp({
     data() {
@@ -6,15 +6,15 @@ Vue.createApp({
             name: "Imageboard",
             seen: "",
             images: [],
-            imgClicked: ""
+            imgClicked: "",
         };
     },
     mounted() {
         fetch("/get-img-info")
             .then((resp) => resp.json())
             .then((data) => {
-               console.log(data);
-               this.images = data;
+                console.log(data);
+                this.images = data;
             });
     },
 }).mount("#main");
