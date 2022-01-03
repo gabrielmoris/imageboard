@@ -2,9 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Onion-Imageboard</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <div id="main">
+        <h1>{{name}}</h1>
+
+        <div class="img-container" v-if="images.length">
+            <div class= "img-div" v-for='img in images'>
+                <img :src="img.url">
+                <d class="img-d">{{img.title}}</d>
+            </div>
+            
+        </div>
+        <button  v-if="images.length > 6">More</button>
+    </div>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+*{
+    background-color: antiquewhite;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.img-container{
+    display: grid;
+    grid-template-columns: 450px 450px 450px;
+    /* grid-template-rows: auto; */
+   column-gap: 50px;
+   row-gap: 50px;
+}
+
+.img-div{
+    background-color: cadetblue;
+    overflow: hidden;
+    border: solid black 2px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 300px 1fr;
+    align-items: center;
+    text-align:  center;
+}
+
+.img-d{
+    background-color: cadetblue;
+}
