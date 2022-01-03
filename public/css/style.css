@@ -1,10 +1,14 @@
 *{
-    background-color: antiquewhite;
+    font-family: 'Permanent Marker', cursive;
 }
 
 img{
     width: 100%;
     height: auto;
+}
+.title{
+text-align: center;
+font-size: 50px;
 }
 
 .img-container{
@@ -16,7 +20,7 @@ img{
 }
 
 .img-div{
-    background-color: cadetblue;
+    background-color: antiquewhite;
     overflow: hidden;
     border: solid black 2px;
     border-radius: 10px;
@@ -27,5 +31,5 @@ img{
 }
 
 .img-d{
-    background-color: cadetblue;
+    background-color: antiquewhite;
 }
