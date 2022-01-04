@@ -7,6 +7,34 @@ img {
     height: auto;
 }
 
+input {
+    border-radius: 6px;
+    border: 1px solid antiquewhite;
+    margin-left: 20px;
+}
+
+button {
+    background: linear-gradient(to bottom, white 5%, antiquewhite 100%);
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid antiquewhite;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 20px 0 20px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+button:hover {
+    background: linear-gradient(to bottom, antiquewhite 5%, white 100%);
+    background-color: antiquewhite;
+}
+button:active {
+    position: relative;
+    top: 1px;
+}
+
 form {
     height: 25px;
     justify-content: center;
@@ -60,4 +88,9 @@ form {
 .copyright {
     text-align: center;
     font-size: 15px;
+}
+
+.more-btn {
+    padding-top: 20px;
+    text-align: center;
 }

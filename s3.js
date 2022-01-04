@@ -33,10 +33,9 @@ module.exports.upload = (req, res, next) => {
 
     promise
         .then(() => {
-            // it worked!!!
-            console.log("IMG IN THE CLOUD!");
+            // console.log("IMG IN THE CLOUD!");
             next();
-            fs.unlink(path,()=>{})
+            fs.unlink(path, () => {});
         })
         .catch((err) => {
             // uh oh

@@ -2,17 +2,30 @@ const express = require("express");
 const app = express();
 const db = require("./db.js");
 const { uploader } = require("./upload.js");
-const s3= require("./s3")
+const s3 = require("./s3");
 
 app.use(express.static("./public"));
 app.use(express.json());
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-    console.log("req.body", req.body, "req.file", req.file);
-    if(req.file){
-        res.json({success: true})
-    }else{
-        res.json({success: false})
+    // console.log("req.body", req.body.title, "req.file", req.file);
+    if (req.file) {
+        const url =
+            "https://onionimageboard.s3.amazonaws.com/" + req.file.filename;
+        // console.log("this is the url, dude: ", url)
+        // console.log("This is the title, man: ",req.body.title)
+        db.addImage(
+            url,
+            req.body.username,
+            req.body.title,
+            req.body.description
+        ).then(({rows})=>{
+            // console.log(rows)
+            res.json({ success: true, img: rows[0] });
+        })
+        
+    } else {
+        res.json({ success: false });
     }
 });
 

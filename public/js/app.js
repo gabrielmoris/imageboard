@@ -16,7 +16,7 @@ Vue.createApp({
         fetch("/get-img-info")
             .then((resp) => resp.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 this.images = data;
             });
     },
@@ -34,7 +34,8 @@ Vue.createApp({
             })
                 .then((res) => res.json())
                 .then((res) => {
-                    console.log("res: ", res);
+                    // console.log("res: ", res);
+                    this.images.unshift(res.img);
                     this.success = true;
                 })
                 .catch((err) => {
@@ -45,5 +46,6 @@ Vue.createApp({
             // console.log("fileselected", e);
             this.file = e.target.files[0];
         },
+
     },
 }).mount("#main");
