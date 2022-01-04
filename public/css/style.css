@@ -7,6 +7,20 @@ img {
     height: auto;
 }
 
+form {
+    height: 25px;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    background: linear-gradient(
+        0deg,
+        rgba(213, 213, 213, 0) 20%,
+        rgba(213, 213, 213, 1) 50%,
+        rgba(213, 213, 213, 0) 80%
+    );
+    margin-bottom: 50px;
+}
+
 .title {
     text-align: center;
     font-size: 50px;
@@ -14,8 +28,8 @@ img {
 
 .img-container {
     display: grid;
-    grid-template-columns: 450px 450px 450px;
-    /* grid-template-rows: auto; */
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-rows: auto;
     column-gap: 50px;
     row-gap: 50px;
 }
@@ -33,4 +47,17 @@ img {
 
 .img-d {
     background-color: antiquewhite;
+}
+
+.success {
+    margin-top: 0;
+    color: green;
+    font-size: 20px;
+    /* position: absolute; */
+    z-index: 10000000;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 15px;
 }
