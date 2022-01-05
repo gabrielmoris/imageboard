@@ -2,6 +2,7 @@ const imgComponent = {
     data() {
         return {
             imgData: {},
+            date: "",
         };
     },
     props: ["passingSomeProp", "imgId"],
@@ -11,12 +12,15 @@ const imgComponent = {
             .then((resp) => resp.json())
             .then((data) => {
                 this.imgData = data;
-                console.log(
-                    "I am in component and this is the imgData",
-                    this.imgData
-                );
+                console.log(data.created_at);
+                let newDate = new Intl.DateTimeFormat("en-GB", {
+                    dateStyle: "long",
+                    timeStyle: "short",
+                }).format(data.create_at);
+                // console.log("this.imgData: ",this.imgData)
+                this.date = newDate;
             });
-        console.log("i am the img id in the component!", this.imgId);
+        // console.log("i am the img id in the component!", this.imgId);
     },
     methods: {
         notifyParent() {
@@ -27,7 +31,7 @@ const imgComponent = {
     <h3 class="close-x" @click="notifyParent">X</h3>
     <h1>{{imgData.title}}</h1>
      <img class="img-component" :src="imgData.url" :alt="imgData.title" :key="imgData.id">
-    <p class="img-d-component">User: {{imgData.username}}<br> Description: {{imgData.description}}</p> 
+    <p class="img-d-component">User: {{imgData.username}}<br> Description: {{imgData.description}}<br> Created: {{date}}</p> 
     </div>
     `,
 };
