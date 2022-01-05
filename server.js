@@ -35,9 +35,18 @@ app.get("/get-img-info", (req, res) => {
             res.json(allImg.rows);
         })
         .catch((err) => {
-            console.log("error in db ", err);
+            console.log("error in db get-img-info", err);
         });
 });
+
+app.get("/get-img-by-id/:id", (req, res)=>{
+    db.getImgbyId(req.params.id).then((dataImg)=>{
+        // console.log(dataImg.rows[0]);
+        res.json(dataImg.rows[0])
+    }).catch((err) => {
+            console.log("error in db get-img-by-id", err);
+        });
+})
 
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);

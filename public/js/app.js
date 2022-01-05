@@ -1,4 +1,5 @@
 import * as Vue from "./vue.js";
+import imgComponent from "./imgComponent.js";
 
 Vue.createApp({
     data() {
@@ -10,6 +11,7 @@ Vue.createApp({
             username: "",
             file: null,
             success: false,
+            imgSelected: null,
         };
     },
     mounted() {
@@ -19,6 +21,9 @@ Vue.createApp({
                 // console.log(data);
                 this.images = data;
             });
+    },
+    components: {
+        "img-component": imgComponent,
     },
     methods: {
         clickHandler: function () {
@@ -46,6 +51,12 @@ Vue.createApp({
             // console.log("fileselected", e);
             this.file = e.target.files[0];
         },
-
+        selectImg(clickedId) {
+            this.imgSelected = clickedId;
+            // console.log("this is img id from app.js: ", this.imgSelected);
+        },
+        closeComponent() {
+            this.imgSelected = null;
+        },
     },
 }).mount("#main");

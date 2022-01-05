@@ -2,9 +2,10 @@
     font-family: "Permanent Marker", cursive;
 }
 
-img {
+.img-small {
     width: 100%;
     height: auto;
+    cursor: pointer;
 }
 
 input {
@@ -40,12 +41,12 @@ form {
     justify-content: center;
     align-content: center;
     display: flex;
-    background: linear-gradient(
+    /* background: linear-gradient(
         0deg,
         rgba(213, 213, 213, 0) 20%,
         rgba(213, 213, 213, 1) 50%,
         rgba(213, 213, 213, 0) 80%
-    );
+    ); */
     margin-bottom: 50px;
 }
 
@@ -93,4 +94,40 @@ form {
 .more-btn {
     padding-top: 20px;
     text-align: center;
+}
+
+.close-x {
+    font-size: 50px;
+    cursor: pointer;
+    padding-left: 80%;
+}
+
+.close-x:hover {
+    color: red;
+}
+
+.big-img-div {
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    top: 0%;
+    bottom: -105%;
+    /* width: 700px;
+    height: 700px; */
+    justify-self: center;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.img-d-component {
+    border-radius: 7px;
+    border: solid black 2px;
+    width: 30%;
+    margin-left: 35%;
+}
+
+.img-component {
+    border-radius: 7px;
+    border: solid black 2px;
+    max-width: 1200px;
 }

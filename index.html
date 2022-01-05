@@ -11,6 +11,7 @@
 </head>
 <body>
     <div id="main">
+        <img-component v-if="imgSelected" :img-id="imgSelected" @close="closeComponent()"></img-component>
         <h1 class="title">{{name}}</h1>
 
         <form>
@@ -24,7 +25,7 @@
 
         <div class="img-container">
             <div class= "img-div" v-for='img in images'>
-                <img :src="img.url" :alt="img.title">
+                <img class="img-small" @click="selectImg(img.id)" :src="img.url" :alt="img.title" :key="img.id">
                 <p class="img-d">{{img.title}}</p>
             </div>
             
