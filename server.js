@@ -19,11 +19,10 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
             req.body.username,
             req.body.title,
             req.body.description
-        ).then(({rows})=>{
+        ).then(({ rows }) => {
             // console.log(rows)
             res.json({ success: true, img: rows[0] });
-        })
-        
+        });
     } else {
         res.json({ success: false });
     }
@@ -39,14 +38,26 @@ app.get("/get-img-info", (req, res) => {
         });
 });
 
-app.get("/get-img-by-id/:id", (req, res)=>{
-    db.getImgbyId(req.params.id).then((dataImg)=>{
-        // console.log(dataImg.rows[0]);
-        res.json(dataImg.rows[0])
-    }).catch((err) => {
+app.get("/get-img-by-id/:id", (req, res) => {
+    db.getImgbyId(req.params.id)
+        .then((dataImg) => {
+            // console.log(dataImg.rows[0]);
+            res.json(dataImg.rows[0]);
+        })
+        .catch((err) => {
             console.log("error in db get-img-by-id", err);
         });
-})
+});
+
+app.get("/get-more-img/:lowId", (req, res) => {
+    db.getMoreImages(req.params.lowId)
+        .then(({ rows }) => {
+            res.json(rows);
+        })
+        .catch((e) => {
+            console.log("error getting more images: ", e);
+        });
+});
 
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);

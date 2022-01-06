@@ -1,3 +1,5 @@
+import comentComponent from "./comentComponent.js";
+
 const imgComponent = {
     data() {
         return {
@@ -21,6 +23,9 @@ const imgComponent = {
             });
         // console.log("i am the img id in the component!", this.imgId);
     },
+    components: {
+        "coment-component": comentComponent,
+    },
     methods: {
         notifyParent() {
             this.$emit("close");
@@ -30,7 +35,8 @@ const imgComponent = {
     <h3 class="close-x" @click="notifyParent">X</h3>
     <h1>{{imgData.title}}</h1>
      <img class="img-component" :src="imgData.url" :alt="imgData.title" :key="imgData.id">
-    <p class="img-d-component">User: {{imgData.username}}<br> Description: {{imgData.description}}<br> Created: {{date}}</p> 
+    <p class="img-d-component">User: {{imgData.username}}<br> Description: {{imgData.description}}<br> Created: {{date}}</p>
+    <coment-component></coment-component> 
     </div>
     `,
 };

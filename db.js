@@ -13,19 +13,31 @@ const db = spicedPg(
 console.log(`[db] connecting to: ${database}`);
 
 module.exports.getImages = () => {
-    const q = `SELECT * FROM images ORDER BY id DESC`;
+    const q = `SELECT * FROM images ORDER BY id DESC LIMIT 3`;
     return db.query(q);
+};
+
+module.exports.getMoreImages = (id) => {
+    const q = `SELECT url, title, id, (SELECT id
+    FROM images
+    ORDER BY id ASC
+    LIMIT 1) AS "lowestId" FROM images
+    WHERE id < $1
+    ORDER BY id DESC
+    LIMIT 3;`;
+    const params = [id];
+    return db.query(q, params);
 };
 
 module.exports.addImage = (url, username, title, description) => {
     const q = `INSERT INTO images (url, username, title, description) Values($1, $2, $3, $4)
-    RETURNING *`; 
+    RETURNING *`;
     const params = [url, username, title, description];
     return db.query(q, params);
 };
 
-module.exports.getImgbyId= (id)=>{
+module.exports.getImgbyId = (id) => {
     const q = `SELECT * FROM images WHERE id = $1`;
-    const params=[id]
+    const params = [id];
     return db.query(q, params);
-}
+};

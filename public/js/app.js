@@ -12,13 +12,15 @@ Vue.createApp({
             file: null,
             success: false,
             imgSelected: null,
+            lowerId: 0,
+            moreButton: true,
         };
     },
     mounted() {
         fetch("/get-img-info")
             .then((resp) => resp.json())
             .then((data) => {
-                // console.log(data);
+                // console.log("Data when i mount",data);
                 this.images = data;
             });
     },
@@ -57,6 +59,27 @@ Vue.createApp({
         },
         closeComponent() {
             this.imgSelected = null;
+        },
+        clickMore() {
+            let lowestId = this.images[this.images.length - 1].id;
+
+            fetch(`/get-more-img/${lowestId}`)
+                .then((resp) => resp.json())
+                .then((data) => {
+                    // console.log("data in more images: ",data);
+                    let lastImg = data[data.length - 1].lowestId;
+                    console.log("lastImg: ", lastImg);
+                    let newArray = this.images.concat(data);
+                    this.images = newArray;
+                    this.lowerId = this.images[this.images.length - 1].id;
+                    console.log("lowestId: ", lowestId);
+                    if (lastImg === this.lowerId) {
+                        this.moreButton = false;
+                    }
+                })
+                .catch((e) => {
+                    console.log("Error having more images: ", e);
+                });
         },
     },
 }).mount("#main");
