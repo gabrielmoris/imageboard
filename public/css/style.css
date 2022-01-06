@@ -74,6 +74,10 @@ form {
     text-align: center;
 }
 
+.img-div:hover{
+    box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.8);
+}
+
 .img-d {
     background-color: antiquewhite;
 }

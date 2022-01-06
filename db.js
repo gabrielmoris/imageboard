@@ -19,7 +19,7 @@ module.exports.getImages = () => {
 
 module.exports.addImage = (url, username, title, description) => {
     const q = `INSERT INTO images (url, username, title, description) Values($1, $2, $3, $4)
-    RETURNING *`; //still need to add url
+    RETURNING *`; 
     const params = [url, username, title, description];
     return db.query(q, params);
 };
