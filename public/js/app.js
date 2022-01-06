@@ -20,7 +20,6 @@ Vue.createApp({
         fetch("/get-img-info")
             .then((resp) => resp.json())
             .then((data) => {
-                // console.log("Data when i mount",data);
                 this.images = data;
             });
     },
@@ -29,7 +28,6 @@ Vue.createApp({
     },
     methods: {
         clickHandler: function () {
-            // console.log("this: ", this);
             const fd = new FormData();
             fd.append("title", this.title);
             fd.append("description", this.description);
@@ -41,7 +39,6 @@ Vue.createApp({
             })
                 .then((res) => res.json())
                 .then((res) => {
-                    // console.log("res: ", res);
                     this.images.unshift(res.img);
                     this.success = true;
                 })
@@ -50,12 +47,10 @@ Vue.createApp({
                 });
         },
         fileSelectHandler: function (e) {
-            // console.log("fileselected", e);
             this.file = e.target.files[0];
         },
         selectImg(clickedId) {
             this.imgSelected = clickedId;
-            // console.log("this is img id from app.js: ", this.imgSelected);
         },
         closeComponent() {
             this.imgSelected = null;
@@ -66,13 +61,10 @@ Vue.createApp({
             fetch(`/get-more-img/${lowestId}`)
                 .then((resp) => resp.json())
                 .then((data) => {
-                    // console.log("data in more images: ",data);
                     let lastImg = data[data.length - 1].lowestId;
-                    console.log("lastImg: ", lastImg);
                     let newArray = this.images.concat(data);
                     this.images = newArray;
                     this.lowerId = this.images[this.images.length - 1].id;
-                    console.log("lowestId: ", lowestId);
                     if (lastImg === this.lowerId) {
                         this.moreButton = false;
                     }

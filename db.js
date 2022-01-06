@@ -41,3 +41,16 @@ module.exports.getImgbyId = (id) => {
     const params = [id];
     return db.query(q, params);
 };
+
+module.exports.getComments = (imgId) => {
+    const q = `SELECT * FROM comments WHERE image_id = $1 ORDER BY id DESC`;
+    const params = [imgId]
+    return db.query(q, params);
+};
+
+module.exports.addComment =(imgId, user, comment) =>{
+     const q = `INSERT INTO comments (image_id, username, comment) Values($1, $2, $3)
+    RETURNING *`;
+     const params = [imgId, user, comment];
+     return db.query(q, params);
+}

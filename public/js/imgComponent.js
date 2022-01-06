@@ -9,7 +9,7 @@ const imgComponent = {
     },
     props: ["passingSomeProp", "imgId"],
     mounted() {
-        // console.log("this is this: ", this);
+        document.body.classList.add("body-hidden");
         fetch(`/get-img-by-id/${this.imgId}`)
             .then((resp) => resp.json())
             .then((data) => {
@@ -21,13 +21,13 @@ const imgComponent = {
                 }).format(createdAtDateObj);
                 this.date = newDate;
             });
-        // console.log("i am the img id in the component!", this.imgId);
     },
     components: {
         "coment-component": comentComponent,
     },
     methods: {
         notifyParent() {
+            document.body.classList.remove("body-hidden");
             this.$emit("close");
         },
     },
@@ -36,7 +36,8 @@ const imgComponent = {
     <h1>{{imgData.title}}</h1>
      <img class="img-component" :src="imgData.url" :alt="imgData.title" :key="imgData.id">
     <p class="img-d-component">User: {{imgData.username}}<br> Description: {{imgData.description}}<br> Created: {{date}}</p>
-    <coment-component></coment-component> 
+    <coment-component v-if="imgId" v-bind:imgId="imgId"></coment-component> 
+    <footer><p class="copyright">© Gabriel C. Moris 2022</p></footer>
     </div>
     `,
 };

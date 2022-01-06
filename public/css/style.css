@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     font-family: "Permanent Marker", cursive;
 }
 
@@ -74,7 +75,7 @@ form {
     text-align: center;
 }
 
-.img-div:hover{
+.img-div:hover {
     box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.8);
 }
 
@@ -111,16 +112,19 @@ form {
 }
 
 .big-img-div {
-    position: absolute;
-    right: 0%;
+    position: fixed;
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
     left: 0%;
     top: 0%;
-    bottom: -105%;
-    /* width: 700px;
-    height: 700px; */
     justify-self: center;
     background-color: rgb(255, 255, 255);
     text-align: center;
+}
+
+.body-hidden {
+    overflow: hidden;
 }
 
 .img-d-component {
@@ -134,4 +138,12 @@ form {
     border-radius: 7px;
     border: solid black 2px;
     max-width: 1200px;
+}
+
+.user-comment {
+    color: rgb(112, 98, 80);
+}
+
+.little-data {
+    font-size: 10px;
 }

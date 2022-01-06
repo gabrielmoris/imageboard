@@ -33,7 +33,6 @@ module.exports.upload = (req, res, next) => {
 
     promise
         .then(() => {
-            // console.log("IMG IN THE CLOUD!");
             next();
             fs.unlink(path, () => {});
         })

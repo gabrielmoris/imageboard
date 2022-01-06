@@ -8,19 +8,15 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-    // console.log("req.body", req.body.title, "req.file", req.file);
     if (req.file) {
         const url =
             "https://onionimageboard.s3.amazonaws.com/" + req.file.filename;
-        // console.log("this is the url, dude: ", url)
-        // console.log("This is the title, man: ",req.body.title)
         db.addImage(
             url,
             req.body.username,
             req.body.title,
             req.body.description
         ).then(({ rows }) => {
-            // console.log(rows)
             res.json({ success: true, img: rows[0] });
         });
     } else {
@@ -41,7 +37,6 @@ app.get("/get-img-info", (req, res) => {
 app.get("/get-img-by-id/:id", (req, res) => {
     db.getImgbyId(req.params.id)
         .then((dataImg) => {
-            // console.log(dataImg.rows[0]);
             res.json(dataImg.rows[0]);
         })
         .catch((err) => {
@@ -56,6 +51,30 @@ app.get("/get-more-img/:lowId", (req, res) => {
         })
         .catch((e) => {
             console.log("error getting more images: ", e);
+        });
+});
+
+app.post("/uploadcomment", (req, res) => {
+    if(req.body.user){
+    db.addComment(req.body.imageId, req.body.user, req.body.comment)
+        .then(({ rows }) => {
+            res.json({ success: true, cmt: rows[0] });
+        })
+        .catch((e) => {
+            console.log("Error uploading the comment! ", e);
+        });
+    }else{
+            console.log("Error uploading the comment! ");
+        }
+});
+
+app.get("/get-comment-info/:imgId", (req,res)=>{
+    db.getComments(req.params.imgId)
+        .then(({ rows }) => {
+            res.json(rows);
+        })
+        .catch((e) => {
+            console.log("error getting all the comments: ", e);
         });
 });
 
