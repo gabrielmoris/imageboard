@@ -147,3 +147,22 @@ form {
 .little-data {
     font-size: 10px;
 }
+
+@media screen and (max-width: 800px) {
+.img-container {
+    padding-top: 20px;;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    grid-template-rows: auto;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.img-div {
+    grid-template-rows: 200px 1fr;
+}
+form {
+    height: 15px;
+    display: block;
+}
+
+}
