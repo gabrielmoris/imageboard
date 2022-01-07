@@ -1,3 +1,4 @@
+const PORT = process.env.PORT || 8080;
 const express = require("express");
 const app = express();
 const db = require("./db.js");
@@ -55,20 +56,20 @@ app.get("/get-more-img/:lowId", (req, res) => {
 });
 
 app.post("/uploadcomment", (req, res) => {
-    if(req.body.user){
-    db.addComment(req.body.imageId, req.body.user, req.body.comment)
-        .then(({ rows }) => {
-            res.json({ success: true, cmt: rows[0] });
-        })
-        .catch((e) => {
-            console.log("Error uploading the comment! ", e);
-        });
-    }else{
-            console.log("Error uploading the comment! ");
-        }
+    if (req.body.user) {
+        db.addComment(req.body.imageId, req.body.user, req.body.comment)
+            .then(({ rows }) => {
+                res.json({ success: true, cmt: rows[0] });
+            })
+            .catch((e) => {
+                console.log("Error uploading the comment! ", e);
+            });
+    } else {
+        console.log("Error uploading the comment! ");
+    }
 });
 
-app.get("/get-comment-info/:imgId", (req,res)=>{
+app.get("/get-comment-info/:imgId", (req, res) => {
     db.getComments(req.params.imgId)
         .then(({ rows }) => {
             res.json(rows);
@@ -82,4 +83,4 @@ app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
 
-app.listen(8080, () => console.log(`I'm listening.`));
+app.listen(PORT, () => console.log(`I'm listening.`));
