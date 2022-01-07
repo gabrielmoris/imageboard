@@ -14,7 +14,7 @@ CREATE TABLE comments(
       id SERIAL PRIMARY KEY,
       username VARCHAR NOT NULL,
       comment TEXT NOT NULL,
-      image_id INTEGER NOT NULL REFERENCES images(id),
+      image_id INTEGER NOT NULL REFERENCES images(id) ON DELETE CASCADE,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
 
