@@ -182,4 +182,8 @@ form {
     display: block;
 }
 
+.img-component{
+    max-width: 100%;
+}
+
 }
