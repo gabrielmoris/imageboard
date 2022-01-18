@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Onion-Imageboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <!-- google fonts -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,7 @@
             <input v-model="title" type="text" name="title" placeholder="title">
             <input v-model="username" type="text" name="username" placeholder="username">
             <input v-model="description" type="text" name="description" placeholder="description">
-            <input @change="fileSelectHandler" type="file" name="file" accept="image/*">
+            <input class="input-file" @change="fileSelectHandler" type="file" name="file" accept="image/*">
             <button @click.prevent="clickHandler">Upload</button>
             <p class="success" v-if="success">Upload completed</p>
         </form>

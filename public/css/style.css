@@ -148,10 +148,27 @@ form {
     font-size: 10px;
 }
 
+.input-file{
+    color: transparent;
+    background-color: rgba(250, 235, 215, 0.52);
+    width: 160px;
+}
+
+.input-file::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.input-file::before {
+    content: "Select picture";
+    color: gray;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
 .img-container {
-    padding-top: 20px;;
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    padding-top: 50px;;
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
     grid-template-rows: auto;
     column-gap: 20px;
     row-gap: 20px;
